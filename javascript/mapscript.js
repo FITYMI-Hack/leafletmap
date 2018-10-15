@@ -2,6 +2,7 @@
 // Setup Map
 var mapCenterCoordinates = [39.8333333, -98.585522];
 var zoomLevel = 4;
+var minZoomLevel = 2;
 var maxZoomLevel = 19;
 
 var mapLocation = 'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png';
@@ -16,6 +17,7 @@ var map = L.map('map', {
 
 var mapLayer = L.tileLayer(mapLocation, {
     maxZoom: maxZoomLevel,
+    minZoom: minZoomLevel,
     attribution: attribution
 });
 
@@ -51,7 +53,7 @@ function loadGeoJSONData() {
     }).addTo(map);  
 }
 function cleanText(txtString) {
-    var regEx = /[^\w\s:\/#]/gi;
+    var regEx = /[^èéòàùì:\/#\w\s]/gi;
     return txtString.replace(regEx, '');
 }
 
