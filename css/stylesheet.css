@@ -1,0 +1,429 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: 'Questrial', sans-serif;
+  margin: 0 25px;
+  background-color: #2e294e;
+
+}
+
+/* Header */
+header {
+  display: flex;
+  width: 95%;
+  max-width: 1500px;
+  margin: 20px auto;
+  height: 15vh;
+  justify-content: space-between;
+
+}
+
+.logo {
+  align-self: center;
+  height: 120px;
+  width: 120px;
+  transform: rotate(-25deg);
+  animation: rotate 2s infinite alternate ease-in-out;
+  border-radius: 50px;
+}
+
+#logo-icon {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes rotate {
+to {transform: rotate(15deg)}
+
+}
+
+.content-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+}
+
+.name {
+  font-size: 3em;
+  transform: scale(1, 0.8);
+  font-weight: 100;
+  text-transform: uppercase;
+  align-self: flex-end;
+  opacity: 0.9;
+  color: #d499b9;
+}
+
+.title {
+  font-size: 1.1em;
+  text-transform: uppercase;
+  align-self: flex-end;
+  letter-spacing: 1px;
+  opacity: 0.70;
+  color: #fff;
+}
+
+/* Main Section */
+.main {
+  height: 600px;
+  width: 95%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+#map {
+  height: 100%;
+}
+
+h3 {
+  margin: 5px 0 15px 0;
+  font-size: 22px;
+  opacity: 0.5;
+}
+
+.article-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  max-width: 1500px;
+  margin: 1% auto;
+  justify-content: flex-start;
+}
+
+.celebrity-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  max-width: 1500px;
+  margin: 1% auto;
+  justify-content: flex-start;
+}
+
+.featured {
+  width: 95%;
+  max-width: 1500px;
+  transform: scale(1, 0.8);
+  text-transform: uppercase;
+  margin: 30px auto;
+  color: #d499b9;
+  opacity: 0.9;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.featured p {
+  font-size: 19px;
+  letter-spacing: normal;
+  margin-top: 20px;
+  color: #fff;
+  text-transform: none;
+}
+
+.article, .celebrity {
+  flex: 1;
+}
+
+#article-first, #middle {
+  margin-right: 20px;
+}
+.celebrity
+
+
+.article-source {
+  font-size: 12px;
+  color: #fff;
+}
+.article-container .article-source {
+  color: #fff;
+}
+.article-title {
+  position: relative;
+  font-size: 16px;
+  font-weight: 100;
+  color: #e8c1c5;
+  margin: 10px 0;
+}
+
+.article-1, iframe {
+  height: 250px;
+  width: 100%;
+  background-color: #000;
+}
+
+.article-2 {
+  height: 250px;
+  width: 100%;
+  background: #000 url("https://cdn.newsapi.com.au/image/v1/85dd743b90102e0909d77aec0637afd6?width=1024") center;
+  background-size: cover;
+}
+
+.article-3 {
+  height: 250px;
+  width: 100%;
+  background: #000 url("https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2017/09/imposter-syndrome-tech.jpg") center;
+  background-size: cover;
+}
+
+.celebrity-1 {
+  position: relative;
+  height: 150px;
+  width: 150px;
+  background: #000 url("https://www.bing.com/th?id=OIP.8ByMcqkpV8Z28iJaDsMv1AHaHa&w=211&h=189&c=7&o=5&pid=1.7") center;
+  background-size: cover;
+}
+.celebrity-2 {
+  height: 150px;
+  width: 150px;
+  background: #d499b9 url("https://www.bing.com/th?id=OIP.0yJQJa4laubxgfAXn2oAhgAAAA&w=204&h=189&c=7&o=5&pid=1.7") center;
+  background-size: cover;
+}
+.celebrity-3 {
+  height: 150px;
+  width: 150px;
+  background: #d499b9 url("https://www.bing.com/th?id=OIP.qN8SMyp1qW2O09TKcDPEWwAAAA&w=188&h=188&c=7&o=5&pid=1.7") center;
+  background-size: cover;
+}
+.celebrity-4 {
+  height: 150px;
+  width: 150px;
+  background: #d499b9 url("https://www.bing.com/th?id=OIP.n4JzsyO8qkO9cD3arZ93IwAAAA&w=193&h=185&c=7&o=5&pid=1.7") center;
+  background-size: cover;
+}
+
+
+.celebrity-quote-1, .celebrity-quote-2, .celebrity-quote-3, .celebrity-quote-4 {
+  position: absolute;
+  height: 177px;
+  width: 177px;
+  padding: 10px;
+  color: #011638;
+  font-weight: bold;
+  background-color: #d499b9;
+  opacity: 0.9;
+  visibility: hidden;
+}
+
+.celebrity-1:hover + .article-title, .celebrity-2:hover + .article-title, .celebrity-3:hover + .article-title, .celebrity-4:hover + .article-title {
+  color: #011638;
+  margin-left: 10px;
+  z-index: 10;
+}
+.celebrity-1:hover ~ .article-title::before, .celebrity-2:hover ~ .article-title::before, .celebrity-3:hover ~ .article-title::before, .celebrity-4:hover ~ .article-title::before    {
+  content: "~ "
+}
+.celebrity-1:hover > .celebrity-quote-1, .celebrity-2:hover > .celebrity-quote-2, .celebrity-3:hover > .celebrity-quote-3, .celebrity-4:hover > .celebrity-quote-4  {
+  visibility: visible;
+}
+
+
+.about {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  max-width: 1500px;
+  margin: 0 auto;
+  height: 30vh;
+}
+
+#profile {
+  align-self: center;
+}
+
+.about-me, .test {
+  margin: 8px 20px;
+  word-wrap: break-word;
+  color: #fff;
+  font-size: 16px;
+  opacity: 0.8;
+}
+.impostor-syndrome {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+
+
+
+}
+.test-button {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 250px
+  padding: 10px;
+  margin: 8px 20px;
+  border-radius: 4px;
+  background-color: #9055a2;
+}
+.test-button a {
+  color: #fff;
+  opacity: 0.9;
+  text-decoration: none;
+  padding: 10px 20px;
+
+}
+/* Footer */
+footer {
+  display: flex;
+  width: 95%;
+  max-width: 1500px;
+  margin: 22px auto;
+  align-items: center;
+  height: 50px;
+  justify-content: space-between;
+  border-top: 2px solid #e8c1c5;
+}
+
+i {
+  font-size: 32px;
+}
+
+.fa-envelope,
+.fab {
+  color: #f7faed;
+  opacity: 0.5;
+}
+
+.fa-envelope {
+  font-size: 28px;
+}
+
+.fa-envelope:hover,
+.fab:hover {
+  color: #e8c1c;
+  opacity: 1;
+}
+
+.footer-font {
+  font-size: 20px;
+  font-family: 'Questrial', sans-serif;
+}
+
+.contact,
+.social {
+  align-self: flex-end;
+  margin-bottom: 10px;
+  color: #f7faed;
+  opacity: 0.7;
+}
+
+@media screen and (min-width: 1460px) {
+  .container {
+    width: 1460px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .name {
+    font-size: 2.6em;
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .name {
+    font-size: 2.4em;
+  }
+}
+
+@media screen and (max-width: 858px) {
+  .name {
+    font-size: 2.2em;
+  }
+  .title {
+    font-size: 1em;
+  }
+  #article-first, #middle {
+    flex-basis: 40%
+  }
+  #middle {
+    margin-right: 0;
+  }
+  .article-container .article-source {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 803px) {
+  #profile {
+    display: none;
+  }
+  .impostor-syndrome {
+    width: 100%;
+  }
+  .about-me, .test, .test-button {
+    margin-left: 0;
+  }
+  .name {
+    font-size: 2.0em;
+  }
+}
+
+@media screen and (max-width: 748px) {
+  .name {
+    font-size: 1.6em;
+  }
+
+}
+
+@media screen and (max-width: 638px) {
+  .name {
+    font-size: 1.4em;
+  }
+  .title {
+    font-size: 0.9em;
+  }
+  .logo {
+    height: 90px;
+    width: 90px;
+  }
+}
+
+@media screen and (max-width: 551px) {
+  .name {
+    font-size: 1.3em;
+  }
+  .title {
+    font-size: 0.8em;
+    align-self: flex-start;
+  }
+
+  .celebrity-container .article-source {
+    margin-bottom: 10px;
+  }
+
+
+}
+
+  @media screen and (max-width: 470px) {
+    .footer-font, .social i {
+      font-size: 14px;
+    }
+    footer {
+      height: 42px;
+
+
+    }
+
+    .article, .celebrity {
+      flex-basis: 100%;
+    }
+    #logo-icon {
+      flex-basis: 25%;
+    }
+    .content-right {
+      flex-basis: 75%;
+    }
+
+    .about {
+      margin-top: 25px;
+    }
+  }
+}
