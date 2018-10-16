@@ -13,25 +13,37 @@ div.circle {
     opacity: 0.5;
 
 }
+
 div.tweet-info {
     font-size: 14px;
     display: grid;
     grid-template-areas: "image name name name"
                          "tweet tweet tweet tweet"
                          "location location date date";
-    /* grid-template-columns: 1fr 1fr 2fr; */
     grid-column-gap: 5px;
+    grid-row-gap: 10px;
     width: 300px;
     font-size: 16px;
     line-height: 22px;
     font-family: 'Open Sans', sans-serif; 
 }
+
+.tweet-info a {
+    text-decoration: none;
+    color: #0084b4;
+    font-weight: bolder;
+}
+.tweet-info a:hover {
+    color: #2e294e;   
+}
+
 .tweet-img {
     grid-area: image;
 }
 .tweet-img img {
-    width: 40px;
+    width: 50px;
     border-radius: 50%;
+    border: 2px solie white;
 }
 .tweet-name {
     grid-area: name;
