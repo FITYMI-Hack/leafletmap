@@ -50,7 +50,7 @@ function buildMarkers(feature, layer) {
     //Setup PopUp
     layer.bindPopup('<div class="tweet-info">' +
                     '<div class="tweet-img">' +
-                    '<a href="https://twitter.com/' + feature.properties.s_name + '" target="_blank"><img src="' + feature.properties.image_url + '" alt="Twitter Profile Picture"></a></div>' +
+                    '<a href="https://twitter.com/' + feature.properties.s_name + '" target="_blank"><img src="' + feature.properties.image_url + '" alt=""></a></div>' +
                     '<div class="tweet-name"><a href="https://twitter.com/' + feature.properties.s_name + '" target="_blank">@' + feature.properties.s_name  + '</a></div>' +
                     '<div class="tweet-text">' + linkify(cleanText(feature.properties.t_text)) + '</div>' +
                     '<div class="tweet-date">' + formatDate(feature.properties.t_date) + '</div>' +
