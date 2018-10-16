@@ -40,7 +40,8 @@ function buildMarkers(feature, layer) {
                     '<img src="' + feature.properties.image_url + '"></div>' +
                     '<div class="tweet-name">' + feature.properties.s_name + '</div>' +
                     '<div class="tweet-text">' + cleanText(feature.properties.t_text) + '</div>' +
-                    '<div class="tweet-date">' + feature.properties.t_date + '</div>' +
+                    '<div class="tweet-date">' + formatDate(feature.properties.t_date) + '</div>' +
+                    '<div class="tweet-location">' + feature.properties.City + ' - ' + feature.properties.State + '</div>' +
                     '</div>');
   
 }
@@ -54,6 +55,11 @@ function loadGeoJSONData() {
 }
 function cleanText(txtString) {
     var regEx = /[^èéòàùì:\/#\w\s]/gi;
-    return txtString.replace(regEx, '');
+    return txtString.replace(regEx, ' ');
 }
-
+function formatDate(dateText) {
+    var dateValue = new Date(dateText);
+    var dateString = '';
+    var dateString = dateValue.getTime() + ' - ' + dateValue.getDay() + ' ' + dateValue.getMonth() + ' ' + dateValue.getFullYear();
+    return moment(dateValue).format('h:mm a - DD MMM YYYY');
+}

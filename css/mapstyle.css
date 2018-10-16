@@ -16,27 +16,41 @@ div.circle {
 div.tweet-info {
     font-size: 14px;
     display: grid;
-    grid-template-areas: "image name"
-                         "image tweet"
-                         "image date";
-    grid-template-columns: 1fr 3fr;
-    grid-column-gap: 10px;
-    min-width: 200px;
+    grid-template-areas: "image name name name"
+                         "tweet tweet tweet tweet"
+                         "location location date date";
+    /* grid-template-columns: 1fr 1fr 2fr; */
+    grid-column-gap: 5px;
+    width: 300px;
+    font-size: 16px;
+    line-height: 22px;
+    font-family: 'Open Sans', sans-serif; 
 }
 .tweet-img {
     grid-area: image;
 }
 .tweet-img img {
-    width: 50px;
+    width: 40px;
     border-radius: 50%;
 }
 .tweet-name {
     grid-area: name;
     font-weight: bold;
+    font-size: 1.1em;
+    align-self: center;
 }
 .tweet-text {
     grid-area: tweet;
+
+
 }
 .tweet-date {
     grid-area: date;
+    font-size: .7em;
+    justify-self: right;
+}
+.tweet-location {
+    grid-area: location;
+    font-size: .7em;
+    justify-self: left;
 }
