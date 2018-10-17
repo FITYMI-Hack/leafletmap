@@ -127,7 +127,7 @@ function linkify(inputText) {
     var replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" target="_blank">$2</a>');
 
 
-    return replacedText
+    return replacedText;
 }
 
 function getRandomInt(min, max) {

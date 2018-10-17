@@ -6,10 +6,11 @@
 
 body {
     font-family: 'Questrial', sans-serif;
-    margin: 0 25px;
     background-color: #2e294e;
 }
-
+.container, .main {
+    margin: 0 25px;
+}
 /* Header */
 
 header {
@@ -351,7 +352,7 @@ i {
 }
 
 @media screen and (min-width: 1460px) {
-    .container {
+    .container, .main {
         width: 1460px;
         margin: 0 auto;
     }
@@ -425,6 +426,9 @@ i {
 }
 
 @media screen and (max-width: 551px) {
+    .main {
+        height: 400px;
+    }
     .name {
         font-size: 1.3em;
     }
