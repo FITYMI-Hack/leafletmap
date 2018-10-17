@@ -21,9 +21,11 @@ var map = L.map('map', {
     zoom: zoomLevel,
     zoomControl: true
 });
+
 if (isMobile == true) {
-    map.scrollWheelZoom = false;
+    map.dragging.disable();
 }
+
 var mapLayer = L.tileLayer(mapLocation, {
     maxZoom: maxZoomLevel,
     minZoom: minZoomLevel,
