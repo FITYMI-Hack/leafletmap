@@ -6,12 +6,12 @@
 
 body {
     font-family: 'Questrial', sans-serif;
-    /* margin: 0 25px; */
     background-color: #2e294e;
 }
 
-.container, .main {
-    margin:  0 25px;
+.container,
+.main {
+    margin: 0 25px;
 }
 
 /* Header */
@@ -219,10 +219,18 @@ iframe {
     background-size: cover;
 }
 
+.celebrity-5 {
+    height: 150px;
+    width: 150px;
+    background: #d499b9 url("http://metacolor.org/wp-content/uploads/2014/12/Albert-Einstein1.jpg") center top;
+    background-size: cover;
+}
+
 .celebrity-quote-1,
 .celebrity-quote-2,
 .celebrity-quote-3,
-.celebrity-quote-4 {
+.celebrity-quote-4,
+.celebrity-quote-5 {
     position: absolute;
     height: 177px;
     width: 177px;
@@ -238,7 +246,8 @@ iframe {
 .celebrity-1:hover+.article-title,
 .celebrity-2:hover+.article-title,
 .celebrity-3:hover+.article-title,
-.celebrity-4:hover+.article-title {
+.celebrity-4:hover+.article-title,
+.celebrity-5:hover+.article-title {
     color: #011638;
     margin-left: 10px;
     z-index: 10;
@@ -247,14 +256,16 @@ iframe {
 .celebrity-1:hover~.article-title::before,
 .celebrity-2:hover~.article-title::before,
 .celebrity-3:hover~.article-title::before,
-.celebrity-4:hover~.article-title::before {
+.celebrity-4:hover~.article-title::before,
+.celebrity-5:hover~.article-title::before {
     content: "~ "
 }
 
 .celebrity-1:hover>.celebrity-quote-1,
 .celebrity-2:hover>.celebrity-quote-2,
 .celebrity-3:hover>.celebrity-quote-3,
-.celebrity-4:hover>.celebrity-quote-4 {
+.celebrity-4:hover>.celebrity-quote-4,
+.celebrity-5:hover>.celebrity-quote-5 {
     visibility: visible;
 }
 
@@ -355,7 +366,8 @@ i {
 }
 
 @media screen and (min-width: 1460px) {
-    .container, .main {
+    .container,
+    .main {
         width: 1460px;
         margin: 0 auto;
     }
@@ -383,6 +395,9 @@ i {
     #article-first,
     #middle {
         flex-basis: 45%
+    }
+    .celebrity {
+        flex-basis: 25%;
     }
     #middle {
         margin-right: 0;
@@ -415,6 +430,13 @@ i {
     }
 }
 
+@media screen and (max-width: 700px) {
+    .celebrity {
+        flex-grow: 0;
+        margin: 10px;
+    }
+}
+
 @media screen and (max-width: 638px) {
     .name {
         font-size: 1.4em;
@@ -430,7 +452,7 @@ i {
 
 @media screen and (max-width: 551px) {
     .main {
-        height:  400px;
+        height: 400px;
     }
     .name {
         font-size: 1.3em;
@@ -462,7 +484,8 @@ i {
     .celebrity-1,
     .celebrity-2,
     .celebrity-3,
-    .celebrity-4 {
+    .celebrity-4,
+    .celebrity-5 {
         margin: 0 auto;
     }
     #logo-icon {
