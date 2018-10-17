@@ -25,7 +25,7 @@ var map = L.map('map', {
 
 if (isMobile == true) {
     map.dragging.disable();
-    map.setZoom(2);
+    map.setZoom(3);
 }
 
 var mapLayer = L.tileLayer(mapLocation, {
