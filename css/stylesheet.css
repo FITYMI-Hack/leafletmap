@@ -6,11 +6,14 @@
 
 body {
     font-family: 'Questrial', sans-serif;
+    /* margin: 0 25px; */
     background-color: #2e294e;
 }
+
 .container, .main {
-    margin: 0 25px;
+    margin:  0 25px;
 }
+
 /* Header */
 
 header {
@@ -379,7 +382,7 @@ i {
     }
     #article-first,
     #middle {
-        flex-basis: 40%
+        flex-basis: 45%
     }
     #middle {
         margin-right: 0;
@@ -427,7 +430,7 @@ i {
 
 @media screen and (max-width: 551px) {
     .main {
-        height: 400px;
+        height:  400px;
     }
     .name {
         font-size: 1.3em;
@@ -453,6 +456,15 @@ i {
     .celebrity {
         flex-basis: 100%;
     }
+    .celebrity {
+        text-align: center;
+    }
+    .celebrity-1,
+    .celebrity-2,
+    .celebrity-3,
+    .celebrity-4 {
+        margin: 0 auto;
+    }
     #logo-icon {
         flex-basis: 25%;
     }
@@ -461,5 +473,17 @@ i {
     }
     .about {
         margin-top: 25px;
+    }
+    body,
+    header,
+    .main {
+        width: 100%;
+        margin: 0;
+    }
+    .container {
+        margin: 0 10px;
+    }
+    .featured {
+        margin-top: 0;
     }
 }
