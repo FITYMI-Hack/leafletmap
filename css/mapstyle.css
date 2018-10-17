@@ -66,3 +66,18 @@ div.tweet-info {
     font-size: .7em;
     justify-self: left;
 }
+@media screen and (max-width: 551px) {
+    .tweet-info {
+        font-size: 12px;
+        line-height: 18px;
+        max-width: 250px;
+    }
+  
+  }
+  @media screen and (max-width: 370px) {
+    .tweet-info {
+        font-size: 10px;
+        max-width: 200px;
+    }
+  }
+
