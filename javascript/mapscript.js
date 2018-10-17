@@ -19,7 +19,8 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
 var map = L.map('map', {
     center: mapCenterCoordinates,
     zoom: zoomLevel,
-    zoomControl: true
+    zoomControl: true,
+     tap: false
 });
 
 if (isMobile == true) {
