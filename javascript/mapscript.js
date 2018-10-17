@@ -8,6 +8,16 @@ var maxZoomLevel = 19;
 var mapLocation = 'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png';
 var attribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 
+//Setup Map Markers
+var tweetIcon = L.divIcon({
+    className: 'circle fab fa-twitter',
+    iconSize: [20, 20]
+});
+var circleIcon = L.divIcon({
+    className: 'circle',
+    iconSize: [20, 20]
+});
+
 var isMobile = false; //initiate as false
 // device detection
 if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
@@ -20,7 +30,7 @@ var map = L.map('map', {
     center: mapCenterCoordinates,
     zoom: zoomLevel,
     zoomControl: true,
-     tap: false
+    tap: false
 });
 
 if (isMobile == true) {
@@ -44,21 +54,62 @@ openRandomMarker();
 var myVar = setInterval(openRandomMarker, 10000);
 
 //TODO: Add a way to stop opening random markers
-function myStopFunction() {
+
+function resetInterval() {
     clearInterval(myVar);
+    myVar = setInterval(openRandomMarker, 10000);
+
 }
 
 
 
-
-
 // FUNCTIONS //
-function buildMarkers(feature, layer) {
-    //Setup Map Markers
-    var circleIcon = L.divIcon({ className : 'circle fab fa-twitter',
-    iconSize : [ 20, 20 ]});
-    layer.setIcon(circleIcon);
+function loadGeoJSONData() {
 
+    // TODO:  Need to change test_data to production data value
+        geojson = L.geoJson(test_data, {
+            onEachFeature: buildMarkers
+        }).addTo(map);  
+    
+        //Trying cluster grouping
+        //  var markers = L.markerClusterGroup();
+        // geojson = L.geoJson(test_data, {
+        //     onEachFeature: buildMarkers
+        // });
+        // markers.addLayer(geojson);
+        // map.addLayer(markers);
+    
+    }
+    
+    
+function buildMarkers(feature, layer) {
+
+     layer.setIcon(circleIcon);
+     layer.setOpacity(0.3);
+
+    // Remove to change icon on zoom
+    //  map.on('zoomend', function(ev){
+    //     if (map.getZoom() > 7) {
+    //       layer.setIcon(tweetIcon);
+    //       layer.setOpacity(1);
+    //     } else {
+    //       layer.setIcon(circleIcon);
+    //       layer.setOpacity(0.3);
+    //     }
+    //   })
+      
+      layer.on({
+        click: function(e) { resetInterval();
+            geojson.eachLayer(function(feature){
+                    feature.setIcon(circleIcon);
+                    feature.setOpacity(0.3);
+           });
+   
+            layer.setIcon(tweetIcon);
+            layer.setOpacity(1);
+            layer.setZIndexOffset(1000);
+  
+    }});
     //Setup PopUp
     layer.bindPopup('<div class="tweet-info">' +
                     '<div class="tweet-img">' +
@@ -72,12 +123,7 @@ function buildMarkers(feature, layer) {
 }
 
 
-function loadGeoJSONData() {
-// TODO:  Need to change test_data to production data value
-    geojson = L.geoJson(test_data, {
-        onEachFeature: buildMarkers
-    }).addTo(map);  
-}
+
 
 function getRandomMarker() {
     var features = [];
@@ -99,6 +145,14 @@ function getRandomMarker() {
         geojson.eachLayer(function(feature){
              if(feature.feature.properties.ID==id){
                  feature.openPopup();
+                 feature.setZIndexOffset(1000);
+                feature.setIcon(tweetIcon);
+                feature.setOpacity(1);
+
+             }
+             else {
+                 feature.setIcon(circleIcon);
+                 feature.setOpacity(0.3);
              }
         
         });
