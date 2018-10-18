@@ -10,7 +10,10 @@ div.circle {
     text-align: center;
 }
 
-
+div.tweet {
+    z-index: 1000;
+    opacity: 1.1;
+}
 .circle:hover {
     color: white;
     opacity: 1;
