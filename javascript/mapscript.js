@@ -103,11 +103,11 @@ function buildMarkers(feature, layer) {
             layer.setZIndexOffset(1000);
         }
     });
-
+//https://twitter.com/[screen_name]/profile_image?size=mini
     //Setup PopUp
     layer.bindPopup('<div class="tweet-info">' +
         '<div class="tweet-img tweet-links">' +
-        '<a href="https://twitter.com/' + feature.properties.s_name + '"  target="_blank"><img src="' + feature.properties.image_ur + '" alt=""></a></div>' +
+        '<a href="https://twitter.com/' + feature.properties.s_name + '"  target="_blank"><img src="http://avatars.io/twitter/' + feature.properties.s_name + '" alt=""></a></div>' +
         '<div class="tweet-name tweet-links"><a href="https://twitter.com/' + feature.properties.s_name + '" target="_blank">@' + feature.properties.s_name + '</a></div>' +
         '<div class="tweet-text tweet-links">' + formatText(feature.properties.t_text) + '</div>' +
         '<div class="tweet-btn"><a href="' + formatLink(feature.properties.t_url) + '" class="t_btn" target="_blank"><span class="fab fa-twitter"></span>View Tweet</a></div>' +

@@ -2104,3 +2104,8 @@ var tweet_data = {
 { "type": "Feature", "properties": { "u_id": 26809, "Country": "USA", "State": "California", "City": "Los Angeles", "t_url": "https:\/\/twitter.com\/JBRylah\/status\/1.05264e+18", "t_id": 1.05264e+18, "s_name": "JBRylah", "t_text": "@alicialutes Hi, hello, hey. I think the industry we work in is a very BIG one for imposter syndrome and I was goin… https:\/\/t.co\/XR2dJegGRA", "u_locati": "Los Angeles, California, USA", "image_ur": "http:\/\/pbs.twimg.com\/profile_images\/774721052702150657\/MvtbqWvm_normal.jpg", "t_date": "10\/17\/2018 19:30", "POINT_X": -118.2421407, "POINT_Y": 34.05763748 }, "geometry": { "type": "Point", "coordinates": [ -118.2421407, 34.05763748 ] } }
 ]
 };
+
+tweet_data.features.forEach(function (arrayItem) {
+    delete arrayItem.properties.image_ur;
+    delete arrayItem.properties.t_url;
+});
