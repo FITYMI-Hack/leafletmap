@@ -179,14 +179,14 @@ iframe {
 .article-2 {
     height: 250px;
     width: 100%;
-    background: #000 url("../img/woman-mirror.gif") center;
+    background: #000 url("../img/woman-mirror.jpg") center;
     background-size: cover;
 }
 
 .article-3 {
     height: 250px;
     width: 100%;
-    background: #000 url("../img/skillcrush.gif") center;
+    background: #000 url("../img/skillcrush.jpg") center;
     background-size: cover;
 }
 
@@ -194,35 +194,35 @@ iframe {
     position: relative;
     height: 150px;
     width: 150px;
-    background: #000 url("../img/meryl-streep.gif") center;
+    background: #000 url("../img/meryl-streep.jpg") center;
     background-size: cover;
 }
 
 .celebrity-2 {
     height: 150px;
     width: 150px;
-    background: #d499b9 url("../img/sonia-sotomayor.gif") center;
+    background: #d499b9 url("../img/sonia-sotomayor.jpg") center;
     background-size: cover;
 }
 
 .celebrity-3 {
     height: 150px;
     width: 150px;
-    background: #d499b9 url("../img/margaret-chan.gif") center;
+    background: #d499b9 url("../img/margaret-chan.jpg") center;
     background-size: cover;
 }
 
 .celebrity-4 {
     height: 150px;
     width: 150px;
-    background: #d499b9 url("../img/maya-angelou.gif") center;
+    background: #d499b9 url("../img/maya-angelou.jpg") center;
     background-size: cover;
 }
 
 .celebrity-5 {
     height: 150px;
     width: 150px;
-    background: #d499b9 url("../img/Albert-Einstein.gif") center;
+    background: #d499b9 url("../img/Albert-Einstein.jpg") center;
     background-size: cover;
 }
 
