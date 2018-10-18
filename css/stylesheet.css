@@ -179,14 +179,14 @@ iframe {
 .article-2 {
     height: 250px;
     width: 100%;
-    background: #000 url("https://cdn.newsapi.com.au/image/v1/85dd743b90102e0909d77aec0637afd6?width=1024") center;
+    background: #000 url("../img/woman-mirror.jpg") center;
     background-size: cover;
 }
 
 .article-3 {
     height: 250px;
     width: 100%;
-    background: #000 url("https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2017/09/imposter-syndrome-tech.jpg") center;
+    background: #000 url("../img/skillcrush.jpg") center;
     background-size: cover;
 }
 
@@ -194,35 +194,35 @@ iframe {
     position: relative;
     height: 150px;
     width: 150px;
-    background: #000 url("https://www.bing.com/th?id=OIP.8ByMcqkpV8Z28iJaDsMv1AHaHa&w=211&h=189&c=7&o=5&pid=1.7") center;
+    background: #000 url("../img/meryl-streep.jpg") center;
     background-size: cover;
 }
 
 .celebrity-2 {
     height: 150px;
     width: 150px;
-    background: #d499b9 url("https://www.bing.com/th?id=OIP.0yJQJa4laubxgfAXn2oAhgAAAA&w=204&h=189&c=7&o=5&pid=1.7") center;
+    background: #d499b9 url("../img/sonia-sotomayor.jpg") center;
     background-size: cover;
 }
 
 .celebrity-3 {
     height: 150px;
     width: 150px;
-    background: #d499b9 url("https://www.bing.com/th?id=OIP.qN8SMyp1qW2O09TKcDPEWwAAAA&w=188&h=188&c=7&o=5&pid=1.7") center;
+    background: #d499b9 url("../img/margaret-chan.jpg") center;
     background-size: cover;
 }
 
 .celebrity-4 {
     height: 150px;
     width: 150px;
-    background: #d499b9 url("https://www.bing.com/th?id=OIP.n4JzsyO8qkO9cD3arZ93IwAAAA&w=193&h=185&c=7&o=5&pid=1.7") center;
+    background: #d499b9 url("../img/maya-angelou.jpg") center;
     background-size: cover;
 }
 
 .celebrity-5 {
     height: 150px;
     width: 150px;
-    background: #d499b9 url("http://metacolor.org/wp-content/uploads/2014/12/Albert-Einstein1.jpg") center top;
+    background: #d499b9 url("../img/Albert-Einstein.jpg") center;
     background-size: cover;
 }
 
@@ -243,29 +243,44 @@ iframe {
     visibility: hidden;
 }
 
-.celebrity-1:hover+.article-title,
-.celebrity-2:hover+.article-title,
-.celebrity-3:hover+.article-title,
-.celebrity-4:hover+.article-title,
-.celebrity-5:hover+.article-title {
+.celebrity-1:hover+.article-title, 
+.celebrity-1:active+.article-title,
+.celebrity-2:hover+.article-title, 
+.celebrity-2:active+.article-title,
+.celebrity-3:hover+.article-title, 
+.celebrity-3:active+.article-title,
+.celebrity-4:hover+.article-title, 
+.celebrity-4:active+.article-title,
+.celebrity-5:hover+.article-title, 
+.celebrity-5:active+.article-title {
     color: #011638;
     margin-left: 10px;
     z-index: 10;
 }
 
 .celebrity-1:hover~.article-title::before,
+.celebrity-1:active~.article-title::before,
 .celebrity-2:hover~.article-title::before,
+.celebrity-2:active~.article-title::before,
 .celebrity-3:hover~.article-title::before,
+.celebrity-3:active~.article-title::before,
 .celebrity-4:hover~.article-title::before,
-.celebrity-5:hover~.article-title::before {
+.celebrity-4:active~.article-title::before,
+.celebrity-5:hover~.article-title::before, 
+.celebrity-5:active~.article-title::before {
     content: "~ "
 }
 
 .celebrity-1:hover>.celebrity-quote-1,
+.celebrity-1:active>.celebrity-quote-1,
 .celebrity-2:hover>.celebrity-quote-2,
+.celebrity-2:active>.celebrity-quote-2,
 .celebrity-3:hover>.celebrity-quote-3,
+.celebrity-3:active>.celebrity-quote-3,
 .celebrity-4:hover>.celebrity-quote-4,
-.celebrity-5:hover>.celebrity-quote-5 {
+.celebrity-4:active>.celebrity-quote-4,
+.celebrity-5:hover>.celebrity-quote-5,
+.celebrity-5:active>.celebrity-quote-5 {
     visibility: visible;
 }
 
