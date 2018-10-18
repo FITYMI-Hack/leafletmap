@@ -41,6 +41,14 @@ var map = L.map('map', {
 if (isMobile == true) {
     map.dragging.disable();   //Disable dragging for mobile devices
     map.setZoom(3);           //Zoom out on mobile device to make the map look better
+    circleIcon = L.divIcon({
+        className: 'circle',
+        iconSize: [20, 20]
+    });
+    tweetIcon = L.divIcon({
+        className: 'tweet circle fab fa-twitter',
+        iconSize: [20, 20]
+    });
 }
 
 var mapLayer = L.tileLayer(mapLocation, {
