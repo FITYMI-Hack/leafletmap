@@ -146,9 +146,9 @@ function openRandomMarker() {
                 feature.setZIndexOffset(1000);
                 feature.setIcon(tweetIcon);
                 feature.setOpacity(1);
-                document.getElementById('btn_' + id).appendChild(
-              document.getElementById('link_'+ id)
-            );
+            //     document.getElementById('btn_' + id).appendChild(
+            //   document.getElementById('link_'+ id)
+            // );
             }
             else {
                 feature.setIcon(circleIcon);
