@@ -14,7 +14,7 @@ var maxZoomLevel = 14;
 
 var mapLocation = 'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png';
 var attribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
-var geoJsonData = test_data;     // TODO:  Need to change test_data to production data value
+var geoJsonData = tweet_data;     // TODO:  Need to change test_data to production data value
 
 //Setup Map Markers
 var tweetIcon = L.divIcon({
@@ -107,7 +107,7 @@ function buildMarkers(feature, layer) {
     //Setup PopUp
     layer.bindPopup('<div class="tweet-info">' +
         '<div class="tweet-img">' +
-        '<a href="https://twitter.com/' + feature.properties.s_name + '" target="_blank"><img src="' + feature.properties.image_url + '" alt=""></a></div>' +
+        '<a href="https://twitter.com/' + feature.properties.s_name + '" target="_blank"><img src="' + feature.properties.image_ur + '" alt=""></a></div>' +
         '<div class="tweet-name"><a href="https://twitter.com/' + feature.properties.s_name + '" target="_blank">@' + feature.properties.s_name + '</a></div>' +
         '<div class="tweet-text">' + formatText(feature.properties.t_text) + '</div>' +
         '<div class="tweet-date">' + formatDate(feature.properties.t_date) + '</div>' +
@@ -133,10 +133,10 @@ function getRandomMarker() {
 function openRandomMarker() {
     var marker = getRandomMarker();
         if (marker != null) {
-        var id = marker.properties.ID;
+        var id = marker.properties.u_id;
         console.log(id);
         geojson.eachLayer(function (feature) {
-            if (feature.feature.properties.ID == id) {
+            if (feature.feature.properties.u_id == id) {
                 feature.openPopup();
                 feature.setZIndexOffset(1000);
                 feature.setIcon(tweetIcon);
@@ -153,7 +153,8 @@ function openRandomMarker() {
 
 // Code to format the text
 function formatText(txtString) {
-    return linkify(cleanText(profanityFilter(txtString)));
+    //return linkify(cleanText(profanityFilter(txtString)));
+    return linkify(profanityFilter(txtString));
 }
 
 // Code to filter out special characters in the tweet
