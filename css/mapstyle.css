@@ -24,8 +24,8 @@ div.tweet-info {
     display: grid;
     grid-template-areas: "image name name name"
                          "tweet tweet tweet tweet"
-                         "btn btn btn btn"
-                         "location location date date";
+                         "location location date date"
+                         "btn btn btn btn";
     grid-column-gap: 5px;
     grid-row-gap: 10px;
     width: 300px;
@@ -43,7 +43,7 @@ div.tweet-info {
     color: #2e294e;   
 }
 .tweet-btn {
-    display:none;
+    
     grid-area: btn;
     justify-self: center;
 }

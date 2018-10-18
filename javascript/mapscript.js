@@ -105,17 +105,21 @@ function buildMarkers(feature, layer) {
     });
 //https://twitter.com/[screen_name]/profile_image?size=mini
     //Setup PopUp
-    layer.bindPopup('<div class="tweet-info">' +
-        '<div class="tweet-img tweet-links">' +
-        '<a href="https://twitter.com/' + feature.properties.s_name + '"  target="_blank"><img src="http://avatars.io/twitter/' + feature.properties.s_name + '" alt=""></a></div>' +
-        '<div class="tweet-name tweet-links"><a href="https://twitter.com/' + feature.properties.s_name + '" target="_blank">@' + feature.properties.s_name + '</a></div>' +
-        '<div class="tweet-text tweet-links">' + formatText(feature.properties.t_text) + '</div>' +
-        '<div class="tweet-btn"><a href="' + formatLink(feature.properties.t_url) + '" class="t_btn" target="_blank"><span class="fab fa-twitter"></span>View Tweet</a></div>' +
-        '<div class="tweet-date">' + formatDate(feature.properties.t_date) + '</div>' +
-        '<div class="tweet-location">' + formatLocation(feature.properties.City, feature.properties.State) + '</div>' +
-        '</div>');
+    var popUpText = '<div class="tweet-info">' +
+    '<div class="tweet-img tweet-links">' +
+    '<a href="https://twitter.com/' + feature.properties.s_name + '"  target="_blank"><img src="http://avatars.io/twitter/' + feature.properties.s_name + '" alt=""></a></div>' +
+    '<div class="tweet-name tweet-links"><a href="https://twitter.com/' + feature.properties.s_name + '" target="_blank">@' + feature.properties.s_name + '</a></div>' +
+    '<div class="tweet-text tweet-links">' + formatText(feature.properties.t_text, feature.properties.u_id) + '</div>' +
+    '<div class="tweet-btn" id="btn_' + feature.properties.u_id + '"></div>' +
+    '<div class="tweet-date">' + formatDate(feature.properties.t_date) + '</div>' +
+    '<div class="tweet-location">' + formatLocation(feature.properties.City, feature.properties.State) + '</div>' +
+    '</div>';
+
+    layer.bindPopup(popUpText);
+
+
 }
-console.log(feature.properties.t_url);
+
 //Get a random marker on the map
 function getRandomMarker() {
     var features = [];
@@ -142,6 +146,9 @@ function openRandomMarker() {
                 feature.setZIndexOffset(1000);
                 feature.setIcon(tweetIcon);
                 feature.setOpacity(1);
+                document.getElementById('btn_' + id).appendChild(
+              document.getElementById('link_'+ id)
+            );
             }
             else {
                 feature.setIcon(circleIcon);
@@ -153,9 +160,9 @@ function openRandomMarker() {
 }
 
 // Code to format the text
-function formatText(txtString) {
+function formatText(txtString, u_id) {
     //return linkify(cleanText(profanityFilter(txtString)));
-    return linkify(profanityFilter(txtString));
+    return linkify(profanityFilter(txtString), u_id);
 }
 function formatLocation(City, State) {
     if ((City != null) && (State != null)) {
@@ -187,11 +194,11 @@ function profanityFilter(txtString) {
 }
 
 // Code to turn URL into clickable link
-function linkify(inputText) {
+function linkify(inputText, u_id) {
     //URLs starting with http://, https://, or ftp://
     var replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
     //var replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a>');
-    var replacedText = inputText.replace(replacePattern1, '<a href="$1" class="t_btn" target="_blank"><span class="fab fa-twitter"></span>View Tweet</a>');
+    var replacedText = inputText.replace(replacePattern1, '<a href="$1" class="t_btn" id="link_' + u_id + '" target="_blank"><span class="fab fa-twitter"></span>View Tweet</a>');
 
     //URLs starting with www. (without // before it, or it'd re-link the ones done above)
     var replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;

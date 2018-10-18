@@ -2105,7 +2105,3 @@ var tweet_data = {
 ]
 };
 
-tweet_data.features.forEach(function (arrayItem) {
-    delete arrayItem.properties.image_ur;
-    delete arrayItem.properties.t_url;
-});
