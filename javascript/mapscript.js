@@ -9,7 +9,7 @@ if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elain
 // Setup Map Defaults
 var mapCenterCoordinates = [39.8333333, -98.585522];
 var zoomLevel = 4;
-var minZoomLevel = 2;
+var minZoomLevel = 4;
 var maxZoomLevel = 14;
 
 var mapLocation = 'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png';
@@ -106,15 +106,16 @@ function buildMarkers(feature, layer) {
 
     //Setup PopUp
     layer.bindPopup('<div class="tweet-info">' +
-        '<div class="tweet-img">' +
-        '<a href="https://twitter.com/' + feature.properties.s_name + '" target="_blank"><img src="' + feature.properties.image_ur + '" alt=""></a></div>' +
-        '<div class="tweet-name"><a href="https://twitter.com/' + feature.properties.s_name + '" target="_blank">@' + feature.properties.s_name + '</a></div>' +
-        '<div class="tweet-text">' + formatText(feature.properties.t_text) + '</div>' +
+        '<div class="tweet-img tweet-links">' +
+        '<a href="https://twitter.com/' + feature.properties.s_name + '"  target="_blank"><img src="' + feature.properties.image_ur + '" alt=""></a></div>' +
+        '<div class="tweet-name tweet-links"><a href="https://twitter.com/' + feature.properties.s_name + '" target="_blank">@' + feature.properties.s_name + '</a></div>' +
+        '<div class="tweet-text tweet-links">' + formatText(feature.properties.t_text) + '</div>' +
+        '<div class="tweet-btn"><a href="' + formatLink(feature.properties.t_url) + '" class="t_btn" target="_blank"><span class="fab fa-twitter"></span>View Tweet</a></div>' +
         '<div class="tweet-date">' + formatDate(feature.properties.t_date) + '</div>' +
-        '<div class="tweet-location">' + feature.properties.City + ' - ' + feature.properties.State + '</div>' +
+        '<div class="tweet-location">' + formatLocation(feature.properties.City, feature.properties.State) + '</div>' +
         '</div>');
 }
-
+console.log(feature.properties.t_url);
 //Get a random marker on the map
 function getRandomMarker() {
     var features = [];
@@ -156,7 +157,21 @@ function formatText(txtString) {
     //return linkify(cleanText(profanityFilter(txtString)));
     return linkify(profanityFilter(txtString));
 }
-
+function formatLocation(City, State) {
+    if ((City != null) && (State != null)) {
+        return City + ' - ' + State;
+    } else if ((City == null) && (State != null)) {
+        return State;
+    } else if ((City != null) && (State == null)) {
+        return City;
+    } else {
+        return "Unknown";
+    }
+}
+function formatLink(linkStr) {
+    console.log(linkStr);
+    return linkStr;
+}
 // Code to filter out special characters in the tweet
 function cleanText(txtString) {
     var regEx = /[^èéòàùì.,'"@?\/#!$%\^&\*;:{}=\-_`~()\\#\w\s]/gi;
@@ -175,7 +190,8 @@ function profanityFilter(txtString) {
 function linkify(inputText) {
     //URLs starting with http://, https://, or ftp://
     var replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
-    var replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a>');
+    //var replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a>');
+    var replacedText = inputText.replace(replacePattern1, '<a href="$1" class="t_btn" target="_blank"><span class="fab fa-twitter"></span>View Tweet</a>');
 
     //URLs starting with www. (without // before it, or it'd re-link the ones done above)
     var replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;

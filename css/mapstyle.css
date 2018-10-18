@@ -24,6 +24,7 @@ div.tweet-info {
     display: grid;
     grid-template-areas: "image name name name"
                          "tweet tweet tweet tweet"
+                         "btn btn btn btn"
                          "location location date date";
     grid-column-gap: 5px;
     grid-row-gap: 10px;
@@ -33,13 +34,56 @@ div.tweet-info {
     font-family: 'Open Sans', sans-serif; 
 }
 
-.tweet-info a {
+.tweet-links a {
     text-decoration: none;
     color: #0084b4;
     font-weight: bolder;
 }
-.tweet-info a:hover {
+.tweet-links a:hover {
     color: #2e294e;   
+}
+.tweet-btn {
+    display:none;
+    grid-area: btn;
+    justify-self: center;
+}
+.t_btn .fab {
+    padding-right: 5px;
+}
+
+.t_btn {
+    font-size: 12px;
+    background-color: #0084b4;
+    border: none;
+    color: white !important;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    width: 150px;
+    opacity: 0.8;
+    margin: 5px auto;
+}
+.t_btn .fab {
+    color: white !important;
+    opacity: 0.8;
+}
+.t_btn .fab:hover {
+    color: white !important;
+    opacity: 1 !important;
+}
+.t_btn:hover {
+    color: white !important;
+    opacity: 1 !important;
+}
+.t_btn .fab:hover {
+    color: white !important;
+}
+.t_btn:visited {
+    color: white !important;
 }
 
 .tweet-img {
@@ -53,7 +97,7 @@ div.tweet-info {
 .tweet-name {
     grid-area: name;
     font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1em;
     align-self: center;
 }
 .tweet-text {
