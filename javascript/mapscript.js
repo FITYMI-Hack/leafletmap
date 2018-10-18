@@ -38,10 +38,15 @@ var map = L.map('map', {
     tap: false
 });
 
+// Make changes to display if a mobile device
 if (isMobile == true) {
-    map.dragging.disable();   //Disable dragging for mobile devices
-    map.setZoom(3);           //Zoom out on mobile device to make the map look better
-    circleIcon = L.divIcon({
+     //Disable dragging for mobile devices
+    map.dragging.disable();  
+    //Zoom out on mobile device to make the map look better
+    map.setZoom(3);           
+
+    //Took out popupAnchor on mobile devices
+    circleIcon = L.divIcon({  
         className: 'circle',
         iconSize: [20, 20]
     });
