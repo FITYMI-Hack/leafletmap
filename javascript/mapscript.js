@@ -45,7 +45,7 @@ if (isMobile == true) {
     //Disable dragging for mobile devices
     map.dragging.disable();
     //Zoom out on mobile device to make the map look better
-    map.setZoom(3);
+    map.setZoom(4);
 
     //Took out popupAnchor on mobile devices
     circleIcon = L.divIcon({
