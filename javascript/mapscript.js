@@ -14,7 +14,8 @@ var maxZoomLevel = 14;
 
 var mapLocation = 'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png';
 var attribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
-var geoJsonData = tweet_data;     
+var geoJsonData = tweet_data;    
+var mobileMaxDataPoints = 250; 
 
 //Setup Map Markers
 var tweetIcon = L.divIcon({
@@ -56,8 +57,10 @@ if (isMobile == true) {
         iconSize: [20, 20]
     });
 
-    //Remove 1/4 data points for mobile devices
-    tweet_data.features.splice(0,(tweet_data.features.length/8));
+    if (mobileMaxDataPoints < geoJsonData.features.length) {
+        geoJsonData.features.splice(0,mobileMaxDataPoints);
+    }
+    
 }
 
 var mapLayer = L.tileLayer(mapLocation, {
