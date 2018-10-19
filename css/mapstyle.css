@@ -4,13 +4,17 @@ div.circle {
     background-color: #1dcaff;
     border: 1px solid #0084b4;
     border-radius: 50%;
-    width:20px;
-    height:20px;
-    line-height: 20px;
+    width:10px;
+    height:10px;
+    line-height: 10px;
     text-align: center;
 }
 
 div.tweet {
+    width:20px !important;
+    height:20px !important;
+    line-height: 20px !important;
+    text-align: center;
     z-index: 1000;
     opacity: 1.1;
 }

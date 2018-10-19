@@ -14,7 +14,7 @@ var maxZoomLevel = 14;
 
 var mapLocation = 'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png';
 var attribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
-var geoJsonData = tweet_data;     // TODO:  Need to change test_data to production data value
+var geoJsonData = tweet_data;     
 
 //Setup Map Markers
 var tweetIcon = L.divIcon({
@@ -24,7 +24,7 @@ var tweetIcon = L.divIcon({
 });
 var circleIcon = L.divIcon({
     className: 'circle',
-    iconSize: [20, 20],
+    iconSize: [10, 10],
     popupAnchor: [0, -10] // sets the popup distance from marker
 });
 
@@ -35,18 +35,19 @@ var map = L.map('map', {
     center: mapCenterCoordinates,
     zoom: zoomLevel,
     zoomControl: true,
-    tap: false
+    tap: false,
+    scrollWheelZoom: false
 });
 
 // Make changes to display if a mobile device
 if (isMobile == true) {
-     //Disable dragging for mobile devices
-    map.dragging.disable();  
+    //Disable dragging for mobile devices
+    map.dragging.disable();
     //Zoom out on mobile device to make the map look better
-    map.setZoom(3);           
+    map.setZoom(3);
 
     //Took out popupAnchor on mobile devices
-    circleIcon = L.divIcon({  
+    circleIcon = L.divIcon({
         className: 'circle',
         iconSize: [20, 20]
     });
@@ -63,6 +64,7 @@ var mapLayer = L.tileLayer(mapLocation, {
 });
 
 mapLayer.addTo(map);
+
 //Load GeoJSONData
 var geojson = loadGeoJSONData();
 
@@ -101,19 +103,24 @@ function buildMarkers(feature, layer) {
             layer.setIcon(tweetIcon);
             layer.setOpacity(1);
             layer.setZIndexOffset(1000);
-        }
+        },
+
     });
-//https://twitter.com/[screen_name]/profile_image?size=mini
+    layer.on('popupopen', function (e) {
+        var marker = e.popup._source;
+        moveTweetLink(feature.properties.u_id);
+    });
+
     //Setup PopUp
     var popUpText = '<div class="tweet-info">' +
-    '<div class="tweet-img tweet-links">' +
-    '<a href="https://twitter.com/' + feature.properties.s_name + '"  target="_blank"><img src="http://avatars.io/twitter/' + feature.properties.s_name + '" alt=""></a></div>' +
-    '<div class="tweet-name tweet-links"><a href="https://twitter.com/' + feature.properties.s_name + '" target="_blank">@' + feature.properties.s_name + '</a></div>' +
-    '<div class="tweet-text tweet-links">' + formatText(feature.properties.t_text, feature.properties.u_id) + '</div>' +
-    '<div class="tweet-btn" id="btn_' + feature.properties.u_id + '"></div>' +
-    '<div class="tweet-date">' + formatDate(feature.properties.t_date) + '</div>' +
-    '<div class="tweet-location">' + formatLocation(feature.properties.City, feature.properties.State) + '</div>' +
-    '</div>';
+        '<div class="tweet-img tweet-links">' +
+        '<a href="https://twitter.com/' + feature.properties.s_name + '"  target="_blank"><img src="http://avatars.io/twitter/' + feature.properties.s_name + '" alt=""></a></div>' +
+        '<div class="tweet-name tweet-links"><a href="https://twitter.com/' + feature.properties.s_name + '" target="_blank">@' + feature.properties.s_name + '</a></div>' +
+        '<div class="tweet-text tweet-links">' + formatText(feature.properties.t_text, feature.properties.u_id) + '</div>' +
+        '<div class="tweet-btn" id="btn_' + feature.properties.u_id + '"></div>' +
+        '<div class="tweet-date">' + formatDate(feature.properties.t_date) + '</div>' +
+        '<div class="tweet-location">' + formatLocation(feature.properties.City, feature.properties.State) + '</div>' +
+        '</div>';
 
     layer.bindPopup(popUpText);
 
@@ -130,14 +137,14 @@ function getRandomMarker() {
             }
         }
     });
-   
+
     return features[getRandomInt(0, features.length)];
 }
 
 //Open the popup for the random marker
 function openRandomMarker() {
     var marker = getRandomMarker();
-        if (marker != null) {
+    if (marker != null) {
         var id = marker.properties.u_id;
         console.log(id);
         geojson.eachLayer(function (feature) {
@@ -146,9 +153,6 @@ function openRandomMarker() {
                 feature.setZIndexOffset(1000);
                 feature.setIcon(tweetIcon);
                 feature.setOpacity(1);
-            //     document.getElementById('btn_' + id).appendChild(
-            //   document.getElementById('link_'+ id)
-            // );
             }
             else {
                 feature.setIcon(circleIcon);
@@ -158,12 +162,56 @@ function openRandomMarker() {
         });
     }
 }
+// Added to move tweet button out of the tweet text 
+function moveTweetLink(id) {
+    try {
+        removeDuplicates();
+        document.getElementById('btn_' + id).appendChild(
+            document.getElementById('link_' + id)
+        );
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+//Remove duplicate links in tweets so only one View Tweet button appears
+function removeDuplicates() {
+    try {
+        var duplicated = {};
+
+        $('[id]').each(function () {
+
+            var ids = $('[id="' + this.id + '"]');
+
+            if (ids.length <= 1) return;
+
+            if (!duplicated[this.id]) {
+                duplicated[this.id] = [];
+            }
+
+            duplicated[this.id].push(this);
+
+        });
+
+        // remove duplicate last ID, for elems > 1 
+        for (var i in duplicated) {
+
+            if (duplicated.hasOwnProperty(i)) {
+                $(duplicated[i].pop()).remove();
+            }
+        }
+
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
 
 // Code to format the text
 function formatText(txtString, u_id) {
-    //return linkify(cleanText(profanityFilter(txtString)));
     return linkify(profanityFilter(txtString), u_id);
 }
+
 function formatLocation(City, State) {
     if ((City != null) && (State != null)) {
         return City + ' - ' + State;
@@ -175,10 +223,7 @@ function formatLocation(City, State) {
         return "Unknown";
     }
 }
-function formatLink(linkStr) {
-    console.log(linkStr);
-    return linkStr;
-}
+
 // Code to filter out special characters in the tweet
 function cleanText(txtString) {
     var regEx = /[^èéòàùì.,'"@?\/#!$%\^&\*;:{}=\-_`~()\\#\w\s]/gi;
@@ -186,11 +231,11 @@ function cleanText(txtString) {
 }
 
 //Code to replace profanity with an asterick
-function profanityFilter(txtString) { 
+function profanityFilter(txtString) {
     var regEx = /fuck|shit|bitch/gi;
-    return txtString.replace(regEx, function(word){
-        return word.replace(/./g,'*')
-       });
+    return txtString.replace(regEx, function (word) {
+        return word.replace(/./g, '*')
+    });
 }
 
 // Code to turn URL into clickable link
