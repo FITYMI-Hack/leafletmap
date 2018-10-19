@@ -49,7 +49,7 @@ if (isMobile == true) {
     //Took out popupAnchor on mobile devices
     circleIcon = L.divIcon({
         className: 'circle',
-        iconSize: [20, 20]
+        iconSize: [10, 10]
     });
     tweetIcon = L.divIcon({
         className: 'tweet circle fab fa-twitter',
