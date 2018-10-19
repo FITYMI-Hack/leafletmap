@@ -196,6 +196,7 @@ iframe {
     width: 150px;
     background: #000 url("../img/meryl-streep.jpg") center;
     background-size: cover;
+    cursor: pointer;
 }
 
 .celebrity-2 {
