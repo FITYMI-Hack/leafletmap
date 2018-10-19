@@ -55,6 +55,9 @@ if (isMobile == true) {
         className: 'tweet circle fab fa-twitter',
         iconSize: [20, 20]
     });
+    
+    //Remove 1/4 data points for mobile devices
+    tweet_data.features.splice(0,(tweet_data.features.length/4));
 }
 
 var mapLayer = L.tileLayer(mapLocation, {
