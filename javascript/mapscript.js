@@ -58,7 +58,7 @@ if (isMobile == true) {
     });
 
     if (mobileMaxDataPoints < geoJsonData.features.length) {
-        geoJsonData.features.splice(0,mobileMaxDataPoints);
+        geoJsonData.features.splice(mobileMaxDataPoints, geoJsonData.features.length-1);
     }
     
 }
