@@ -44,15 +44,15 @@ header {
 
 @-webkit-keyframes rotate {
     to {
-        -webkit-transform: rotate(15deg);
-        transform: rotate(15deg)
+        -webkit-transform: rotate(20deg);
+        transform: rotate(20deg)
     }
 }
 
 @keyframes rotate {
     to {
-        -webkit-transform: rotate(15deg);
-        transform: rotate(15deg)
+        -webkit-transform: rotate(20deg);
+        transform: rotate(20deg)
     }
 }
 
